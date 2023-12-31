@@ -1,15 +1,20 @@
 f=()=>{eval(`
-p='ThisIsAQuine!';
+p='ThisIsAnImitationQuine!';
 o='';
 t='f='+f+';f();';
 r='\\u0020';
 s='\`';
 t=t.replace(/[\\n]|[\\s]/g,'').split('\`');
-test=t;
 u=t[4];
 t=t[0]+s+t[1]+s+t[2]+s+t[3];
 c=0;
-
+cs=[
+    '\\x1b[38;2;86;166;209m',
+    '\\x1b[38;2;117;189;225m',
+    '\\x1b[38;2;248;212;156m',
+    '\\x1b[38;2;248;188;155m',
+    '\\x1b[38;2;248;155;155m',
+];
 a=[
     [0,92],
     [0,92],
@@ -52,43 +57,49 @@ for(i=0;i<a.length;i++){
     if(i==a.length-1){
         for(j=0;j<a[i].length-1;j++){
             for(k=a[i][j];k<a[i][j+1]-u.length-3;k++){
-                o+=p[k%p.length];
+                o+=cs[p[k%p.length].charCodeAt()%5]+p[k%p.length]+'\\x1b[m';
                 c++;
             }
         }
-        o+="*/"+s+u;
+        o+=cs[c%5]+'*'+cs[c%4+1]+'/';
+        for(j=0;j<s.length;j++){
+            o+=cs[s[j].charCodeAt()%5]+s[j];
+        }
+        for(j=0;j<u.length;j++){
+            o+=cs[u[j].charCodeAt()%5]+u[j];
+        }
         break;
     }
     for(j=0;j<a[i].length-1;j++){
         for(k=a[i][j];k<a[i][j+1];k++){
             if(c>=t.length){
                 if(c==t.length){
-                    o+='/';
+                    o+=cs[c%5]+'/';
                     c++;
                     continue;
                 }
                 if(c==t.length+1){
-                    o+='*';
+                    o+=cs[c%5]+'*';
                     c++;
                     continue;
                 }
                 if(i==a.length-1&&j==a[i].length-2&&k==a[i][j+1]-2){
-                    o+='*/';
+                    o+=cs[c%5]+'*'+cs[c%4+1]+'/';
                     c++;
                     break;
                 }
                 if(j%2){
                     o+=r;
                 }else{
-                    o+=p[c%p.length];
-                    c++
+                    o+=cs[((p[c%p.length].charCodeAt())%5)]+p[c%p.length];
+                    c++;
                 }
             }else{
                 if(j%2){
                     o+=r;
                 }else{
-                    o+=t[c];
-                    c++
+                    o+=cs[((t[c].charCodeAt())%5)]+t[c];
+                    c++;
                 }
             }
         }
