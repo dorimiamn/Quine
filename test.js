@@ -31,3 +31,5 @@ console.log('*'.charCodeAt());
 // #f8d49c
 // #f8bc9b
 // #f89b9b
+
+console.log('\x1b[38;2;86;166;209m色がついたよ！');
