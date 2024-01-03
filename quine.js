@@ -5,7 +5,6 @@ t='f='+f+';f();';
 r='\\u0020';
 s='\`';
 t=t.replace(/[\\n]|[\\s]/g,'').split('\`');
-test=t;
 u=t[4];
 t=t[0]+s+t[1]+s+t[2]+s+t[3];
 c=0;
@@ -73,11 +72,6 @@ for(i=0;i<a.length;i++){
                         o+='*';
                         c++;
                         continue;
-                    }
-                    if(i==a.length-1&&j==a[i].length-2&&k==a[i][j+1]-2){
-                        o+='*/';
-                        c++;
-                        break;
                     }
                     o+=p[c%p.length];
                     c++

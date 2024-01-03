@@ -1,5 +1,5 @@
 f=()=>{eval(`
-p='ThisIsAnImitationQuine!';
+p='HappyNewYear!';
 o='';
 t='f='+f+';f();';
 r='\\u0020';
@@ -82,11 +82,6 @@ for(i=0;i<a.length;i++){
                     o+=cs[c%5]+'*';
                     c++;
                     continue;
-                }
-                if(i==a.length-1&&j==a[i].length-2&&k==a[i][j+1]-2){
-                    o+=cs[c%5]+'*'+cs[c%4+1]+'/';
-                    c++;
-                    break;
                 }
                 if(j%2){
                     o+=r;
